@@ -14,6 +14,7 @@ const { requestLogger, errorLogger } = require('./middlewares/logger');
 
 const app = express();
 
+mongoose.set('strictQuery', false);
 mongoose.connect('mongodb://localhost:27017/moviesexplorerdb');
 
 app.use('*', cors(allowedCors));
