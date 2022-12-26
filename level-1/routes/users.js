@@ -1,12 +1,12 @@
 const router = require('express').Router();
 
 const {
-	getUserMe,
-	updateUserById,
+  getUserMe,
+  updateUserById,
 } = require('../controllers/users');
 
 const {
-	updateUserByIdValidation,
+  updateUserByIdValidation,
 } = require('../middlewares/validations');
 
 router.get('/users/me', getUserMe);
