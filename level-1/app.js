@@ -3,7 +3,7 @@ require('dotenv').config();
 const cors = require('cors');
 const express = require('express');
 
-const { PORT = 3001 } = process.env;
+const { PORT = 3000 } = process.env;
 const mongoose = require('mongoose');
 const { errors } = require('celebrate');
 const bodyParser = require('body-parser');
@@ -28,5 +28,5 @@ app.use(errorLogger);
 app.use(errors());
 app.use(serverError);
 app.listen(PORT, () => {
-  console.log(`App listening on port ${PORT}`);
+	console.log(`App listening on port ${PORT}`);
 });
