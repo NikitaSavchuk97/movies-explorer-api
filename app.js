@@ -3,7 +3,7 @@ require('dotenv').config();
 const cors = require('cors');
 const express = require('express');
 
-const { PORT = 3000 } = process.env;
+const { PORT, MOVIESEXPLORERDB } = process.env;
 const mongoose = require('mongoose');
 const { errors } = require('celebrate');
 const bodyParser = require('body-parser');
@@ -15,7 +15,7 @@ const { requestLogger, errorLogger } = require('./middlewares/logger');
 const app = express();
 
 mongoose.set('strictQuery', false);
-mongoose.connect('mongodb://localhost:27017/moviesexplorerdb');
+mongoose.connect(MOVIESEXPLORERDB);
 
 app.use('*', cors(allowedCors));
 
@@ -29,5 +29,5 @@ app.use(errorLogger);
 app.use(errors());
 app.use(serverError);
 app.listen(PORT, () => {
-  console.log(`App listening on port ${PORT}`);
+	console.log(`App listening on port ${PORT}`);
 });
