@@ -1,14 +1,22 @@
+require('dotenv').config();
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
-require('dotenv').config();
 
-const { NODE_ENV, JWT_SECRET } = process.env;
-
+const { JWT_SECRET = 'dev-secret' } = process.env;
 const User = require('../models/user');
 const AuthError401 = require('../errors/authError');
 const BadRequestError400 = require('../errors/badRequestError');
 const ConflictError409 = require('../errors/conflictError');
 const NotFoundError404 = require('../errors/notFoundError');
+
+const {
+  incorrectEmailOrPasswordUser,
+  emailDataBusyUser,
+  noFoundDataUser,
+  incorrectDataForUpdateUser,
+  incorrectDataForm,
+  incorrectData,
+} = require('../errors/errorsConstantsList');
 
 module.exports.loginUser = (req, res, next) => {
   const { email, password } = req.body;
@@ -16,7 +24,7 @@ module.exports.loginUser = (req, res, next) => {
     .then((user) => {
       const token = jwt.sign(
         { _id: user._id },
-        `${NODE_ENV === 'production' ? JWT_SECRET : 'dev-secret'}`,
+        JWT_SECRET,
         { expiresIn: 3600 },
       );
       res.cookie(
@@ -27,7 +35,7 @@ module.exports.loginUser = (req, res, next) => {
       res.send({ token, message: `Выполнен вход в аккаунт ${user.email}` });
     })
     .catch(() => {
-      next(new AuthError401('Неправильные почта или пароль 3'));
+      next(new AuthError401(incorrectEmailOrPasswordUser));
     });
 };
 
@@ -48,9 +56,9 @@ module.exports.createUser = (req, res, next) => {
     }))
     .catch((err) => {
       if (err.code === 11000) {
-        next(new ConflictError409('Пользователь с таким email уже существует'));
+        next(new ConflictError409(emailDataBusyUser));
       } else if (err.name === 'ValidationError') {
-        next(new BadRequestError400('Некорректные данные'));
+        next(new BadRequestError400(incorrectDataForm));
       } else {
         next(err);
       }
@@ -59,13 +67,13 @@ module.exports.createUser = (req, res, next) => {
 
 module.exports.getUserMe = (req, res, next) => {
   User.findById(req.user._id)
-    .orFail(() => new NotFoundError404('Пользователь по указанному _id не найден'))
+    .orFail(() => new NotFoundError404(noFoundDataUser))
     .then((items) => res.status(200).send(items))
     .catch((err) => {
       if (err.name === 'CastError') {
-        next(new BadRequestError400('Переданы некорректные данные'));
+        next(new BadRequestError400(incorrectData));
       } else if (err.kind === 'ObjectId') {
-        next(new BadRequestError400('ObjectId! Переданы некорректные данные.'));
+        next(new BadRequestError400(incorrectData));
       } else {
         next(err);
       }
@@ -76,11 +84,11 @@ module.exports.updateUserById = (req, res, next) => {
   const owner = req.user._id;
   const { name } = req.body;
   User.findByIdAndUpdate(owner, { name }, { new: true, runValidators: true })
-    .orFail(() => new NotFoundError404('Пользователь по указанному _id не найден'))
+    .orFail(() => new NotFoundError404(noFoundDataUser))
     .then((user) => res.send(user))
     .catch((err) => {
       if (err.name === 'ValidationError' || err.name === 'CastError') {
-        next(new BadRequestError400('Некорректные данные для обновления информации'));
+        next(new BadRequestError400(incorrectDataForUpdateUser));
       } else {
         next(err);
       }
