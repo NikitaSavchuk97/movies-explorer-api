@@ -12,14 +12,14 @@ const incorrectDataForm = 'Некорректные данные одного и
 const incorrectData = 'Переданы некорректные данные';
 
 module.exports = {
-	incorrectEmailOrPasswordUser,
-	emailDataBusyUser,
-	noFoundDataUser,
-	incorrectDataForUpdateUser,
-	needAuthUser,
-	noFoundDataFilm,
-	notExistDataFilm,
-	notYourDeleteFilm,
-	incorrectDataForm,
-	incorrectData,
+  incorrectEmailOrPasswordUser,
+  emailDataBusyUser,
+  noFoundDataUser,
+  incorrectDataForUpdateUser,
+  needAuthUser,
+  noFoundDataFilm,
+  notExistDataFilm,
+  notYourDeleteFilm,
+  incorrectDataForm,
+  incorrectData,
 };
