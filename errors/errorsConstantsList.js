@@ -2,6 +2,7 @@ const incorrectEmailOrPasswordUser = 'Неправильные почта или
 const emailDataBusyUser = 'Пользователь с таким email уже существует';
 const noFoundDataUser = 'Пользователь по указанному _id не найден';
 const incorrectDataForUpdateUser = 'Некорректные данные для обновления информации';
+const needAuthUser = 'Необходима авторизация';
 
 const noFoundDataFilm = 'Фильм по указанному _id не найден';
 const notExistDataFilm = 'Фильма с таким _id не существует';
@@ -11,13 +12,14 @@ const incorrectDataForm = 'Некорректные данные одного и
 const incorrectData = 'Переданы некорректные данные';
 
 module.exports = {
-  incorrectEmailOrPasswordUser,
-  emailDataBusyUser,
-  noFoundDataUser,
-  incorrectDataForUpdateUser,
-  noFoundDataFilm,
-  notExistDataFilm,
-  notYourDeleteFilm,
-  incorrectDataForm,
-  incorrectData,
+	incorrectEmailOrPasswordUser,
+	emailDataBusyUser,
+	noFoundDataUser,
+	incorrectDataForUpdateUser,
+	needAuthUser,
+	noFoundDataFilm,
+	notExistDataFilm,
+	notYourDeleteFilm,
+	incorrectDataForm,
+	incorrectData,
 };
