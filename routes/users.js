@@ -1,13 +1,13 @@
 const router = require('express').Router();
 
 const {
-	getUserMe,
-	updateUserById,
-	logoutUser,
+  getUserMe,
+  updateUserById,
+  logoutUser,
 } = require('../controllers/users');
 
 const {
-	updateUserByIdValidation,
+  updateUserByIdValidation,
 } = require('../middlewares/validations');
 
 router.post('/signout', logoutUser);
