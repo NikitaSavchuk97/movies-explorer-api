@@ -18,8 +18,6 @@ const {
   DEFAULT_DB = 'mongodb://localhost:27017/movies-explorer-db-local',
 } = process.env;
 
-
-
 const app = express();
 
 mongoose.set('strictQuery', false);
