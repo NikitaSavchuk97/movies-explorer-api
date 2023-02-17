@@ -4,7 +4,7 @@
 	"author": "Nikita Savchuk",
 	"homepage": "",
 	"version": "0.0.1",
-	"main": "./app.js",
+	"main": "./app-movies.js",
 	"devDependencies": {
 		"eslint": "^8.25.0",
 		"eslint-config-airbnb-base": "^15.0.0",
@@ -13,9 +13,9 @@
 		"nodemon": "^2.0.20"
 	},
 	"scripts": {
-		"start": "node app.js",
+		"start": "node app-movies.js",
 		"test": "jest",
-		"dev": "nodemon app.js",
+		"dev": "nodemon app-movies.js",
 		"lint": "npx eslint .",
 		"lint:fix": "npx eslint . --fix"
 	},
