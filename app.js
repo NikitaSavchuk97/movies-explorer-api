@@ -12,7 +12,7 @@ const serverError = require('./middlewares/serverError');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
 
 const {
-  PORT = 3001,
+  PORT = 3000,
   NODE_ENV,
   MOVIES_EXPLORER_DB,
   DEFAULT_DB = 'mongodb://localhost:27017/movies-explorer-db-local',
