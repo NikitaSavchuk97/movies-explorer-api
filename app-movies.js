@@ -15,7 +15,7 @@ const {
 	PORT = 3001,
 	NODE_ENV,
 	MOVIES_EXPLORER_DB,
-	DEFAULT_DB = 'mongodb://localhost:27017/movies-explorer-db-local',
+	DEFAULT_DB,
 } = process.env;
 
 const app = express();
