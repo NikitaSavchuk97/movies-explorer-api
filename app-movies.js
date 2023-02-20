@@ -12,10 +12,10 @@ const serverError = require('./middlewares/serverError');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
 
 const {
-  PORT = 3001,
-  NODE_ENV,
-  MOVIES_EXPLORER_DB,
-  DEFAULT_DB = 'mongodb://localhost:27017/movies-explorer-db-local',
+	PORT = 3001,
+	NODE_ENV,
+	MOVIES_EXPLORER_DB,
+	DEFAULT_DB,
 } = process.env;
 
 const app = express();
@@ -37,5 +37,5 @@ app.use(errors());
 app.use(serverError);
 
 app.listen(PORT, () => {
-  console.log(`App listening on port ${PORT}`);
+	console.log(`App listening on port ${PORT}`);
 });
