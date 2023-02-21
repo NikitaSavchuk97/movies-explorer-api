@@ -20,6 +20,8 @@ const {
 
 const app = express();
 
+app.use(cors(allowedCors));
+
 mongoose.set('strictQuery', false);
 mongoose.connect(NODE_ENV === 'production' ? MOVIES_EXPLORER_DB : DEFAULT_DB);
 
@@ -29,7 +31,6 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(requestLogger);
 
-app.use(cors(allowedCors));
 app.use(limiter);
 app.use(require('./routes/router'));
 

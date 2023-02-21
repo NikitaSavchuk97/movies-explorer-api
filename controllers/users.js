@@ -27,12 +27,11 @@ module.exports.loginUser = (req, res, next) => {
         NODE_ENV === 'production' ? JWT_SECRET : 'dev-secret',
         { expiresIn: 3600 },
       );
-      res.cookie(
-        'jwt',
-        token,
-        { maxAge: 3600000 * 24 * 7 },
-      );
-      res.send({ token, message: `Выполнен вход в аккаунт ${user.email}` });
+      res
+        .cookie('jwt', token, {
+          maxAge: 3600000 * 24 * 7,
+        })
+        .send({ token, message: `Выполнен вход в аккаунт ${user.email}` });
     })
     .catch(() => {
       next(new AuthError401(incorrectEmailOrPasswordUser));
