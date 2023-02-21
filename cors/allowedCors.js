@@ -12,9 +12,6 @@ const allowedCors = {
     'https://api.nomoreparties.co/beatfilm-movies',
   ],
   methods: ['GET', 'HEAD', 'PUT', 'PATCH', 'POST', 'DELETE'],
-  preflightContinue: false,
-  optionsSuccessStatus: 204,
-  allowedHeaders: ['Content-Type', 'origin', 'Authorization', 'cookies'],
   credentials: true,
 };
 
