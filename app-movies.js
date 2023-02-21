@@ -20,7 +20,11 @@ const {
 
 const app = express();
 
-app.use(cors(allowedCors));
+app.use(cors({
+  origin: allowedCors.allowedUrls,
+  methods: allowedCors.allowedMethods,
+  credentials: true,
+}));
 
 mongoose.set('strictQuery', false);
 mongoose.connect(NODE_ENV === 'production' ? MOVIES_EXPLORER_DB : DEFAULT_DB);
