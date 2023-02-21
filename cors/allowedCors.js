@@ -8,6 +8,8 @@ const allowedCors = {
     'https://snv-project-movies.ru',
     'http://api-snv-project-movies.ru',
     'https://api-snv-project-movies.ru',
+    'http://api.nomoreparties.co/beatfilm-movies',
+    'https://api.nomoreparties.co/beatfilm-movies',
   ],
   methods: ['GET', 'HEAD', 'PUT', 'PATCH', 'POST', 'DELETE'],
   preflightContinue: false,
