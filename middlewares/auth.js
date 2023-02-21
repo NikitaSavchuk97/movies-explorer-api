@@ -2,32 +2,28 @@ require('dotenv').config();
 
 const jsonwebtoken = require('jsonwebtoken');
 
-const { JWT_SECRET } = process.env;
-
+const { JWT_SECRET, NODE_ENV } = process.env;
 const AuthError401 = require('../errors/authError');
-
 const { needAuthUser } = require('../errors/errorsConstantsList');
 
 module.exports = (req, res, next) => {
+  const token = req.cookies.jwt;
 
-	const token = req.cookies.jwt;
+  console.log(token);
 
-	//console.log(req.body);
-	//console.log(token);
+  if (!token) {
+    return next(new AuthError401(`${needAuthUser} 1`));
+  }
 
-	if (!token) {
-		return next(new AuthError401(`${needAuthUser} 1`));
-	}
+  let payload;
 
-	let payload;
+  try {
+    payload = jsonwebtoken.verify(token, NODE_ENV === 'production' ? JWT_SECRET : 'dev-secret');
+  } catch (err) {
+    return next(new AuthError401(`${needAuthUser} 2`));
+  }
 
-	try {
-		payload = jsonwebtoken.verify(token, JWT_SECRET);
-	} catch (err) {
-		return next(new AuthError401(`${needAuthUser} 2`));
-	}
+  req.user = payload;
 
-	req.user = payload;
-
-	return next();
+  return next();
 };
