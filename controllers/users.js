@@ -28,9 +28,9 @@ module.exports.loginUser = (req, res, next) => {
 				{ expiresIn: 3600 },
 			);
 			res
+				.set('Set-Cookie', 'SameSite=none')
 				.cookie('jwt', token, {
 					maxAge: 3600000 * 24 * 7,
-					sameSite: false,
 					secure: true,
 				})
 				.send({ token, message: `Выполнен вход в аккаунт ${user.email}` });
