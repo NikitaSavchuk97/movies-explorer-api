@@ -30,7 +30,7 @@ module.exports.loginUser = (req, res, next) => {
 			res
 				.cookie('jwt', token, {
 					maxAge: 3600000 * 24 * 7,
-					sameSite: true,
+					sameSite: false,
 					secure: true,
 				})
 				.send({ token, message: `Выполнен вход в аккаунт ${user.email}` });
