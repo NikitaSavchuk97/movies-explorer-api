@@ -30,7 +30,8 @@ module.exports.loginUser = (req, res, next) => {
       res
         .cookie('jwt', token, {
           maxAge: 3600000 * 24 * 7,
-          sameSite: 'none',
+          sameSite: true,
+          httpOnly: true,
           secure: true,
         })
         .send({ token, message: `Выполнен вход в аккаунт ${user.email}` });
@@ -41,7 +42,7 @@ module.exports.loginUser = (req, res, next) => {
 };
 
 module.exports.logoutUser = (req, res) => {
-  res.clearCookie('jwt').send({ message: 'Выход пользователя из профиля прошел успешно' });
+  res.clearCookie('jwt', { path: '/' }).send({ message: 'Выход пользователя из профиля прошел успешно' });
 };
 
 module.exports.createUser = (req, res, next) => {
