@@ -32,7 +32,6 @@ module.exports.loginUser = (req, res, next) => {
 					maxAge: 3600000 * 24 * 7,
 					sameSite: 'none',
 					httpOnly: true,
-					secure: true,
 				})
 				.send({ token, message: `Выполнен вход в аккаунт ${user.email}` });
 		})
