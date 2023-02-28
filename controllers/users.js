@@ -90,6 +90,8 @@ module.exports.updateUserById = (req, res, next) => {
 		.catch((err) => {
 			if (err.name === 'ValidationError' || err.name === 'CastError') {
 				next(new BadRequestError400(incorrectDataForUpdateUser));
+			} else if (err.code === 11000) {
+				next(new ConflictError409(emailDataBusyUser));
 			} else {
 				next(err);
 			}
