@@ -12,18 +12,18 @@ const serverError = require('./middlewares/serverError');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
 
 const {
-  PORT,
-  NODE_ENV,
-  MOVIES_EXPLORER_DB,
-  DEFAULT_DB,
+	PORT,
+	NODE_ENV,
+	MOVIES_EXPLORER_DB,
+	DEFAULT_DB,
 } = process.env;
 
 const app = express();
 
 app.use(cors({
-  origin: allowedCors.allowedUrls,
-  methods: allowedCors.allowedMethods,
-  credentials: true,
+	origin: allowedCors.allowedUrls,
+	methods: allowedCors.allowedMethods,
+	credentials: true,
 }));
 
 mongoose.set('strictQuery', false);
@@ -43,5 +43,5 @@ app.use(errors());
 app.use(serverError);
 
 app.listen(PORT, () => {
-  console.log(`App listening on port ${PORT}`);
+	console.log(`App listening on port ${PORT}`);
 });
