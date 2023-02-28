@@ -29,7 +29,7 @@ module.exports.loginUser = (req, res, next) => {
 			);
 			res
 				.cookie('jwt', token, {
-					domain: 'movies.ru',
+					domain: 'api-snv-project-movies.ru',
 					path: '/',
 					maxAge: 3600000 * 24 * 7,
 					sameSite: 'none',
