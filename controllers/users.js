@@ -33,7 +33,7 @@ module.exports.loginUser = (req, res, next) => {
 					sameSite: 'none',
 					httpOnly: true,
 					secure: true,
-					domain: 'snv-project-movies.ru',
+					domain: ['snv-project-movies.ru', 'api-snv-project-movies.ru'],
 				})
 				.send({ token, message: `Выполнен вход в аккаунт ${user.email}` });
 		})
