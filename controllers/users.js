@@ -31,6 +31,7 @@ module.exports.loginUser = (req, res, next) => {
 				.cookie('jwt', token, {
 					maxAge: 3600000 * 24 * 7,
 					sameSite: 'none',
+					secure: true,
 				})
 				.send({ token, message: `Выполнен вход в аккаунт ${user.email}` });
 		})
