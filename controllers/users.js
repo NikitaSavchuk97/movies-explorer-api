@@ -29,11 +29,8 @@ module.exports.loginUser = (req, res, next) => {
 			);
 			res
 				.cookie('jwt', token, {
-					domain: 'api-snv-project-movies.ru',
-					path: '/',
 					maxAge: 3600000 * 24 * 7,
 					sameSite: 'none',
-					httpOnly: true,
 					secure: true,
 				})
 				.send({ token, message: `Выполнен вход в аккаунт ${user.email}` });
