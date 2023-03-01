@@ -33,6 +33,7 @@ module.exports.loginUser = (req, res, next) => {
 					sameSite: 'none',
 					secure: true,
 				})
+				.status(200)
 				.send({ token, message: `Выполнен вход в аккаунт ${user.email}` });
 		})
 		.catch(() => {
