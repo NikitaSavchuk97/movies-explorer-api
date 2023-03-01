@@ -34,7 +34,7 @@ module.exports.loginUser = (req, res, next) => {
 					secure: true,
 				})
 				.status(200)
-				.send({ token, message: `Выполнен вход в аккаунт ${user.email}` });
+				.send({ status: 200, message: `Выполнен вход в аккаунт ${user.email}` });
 		})
 		.catch(() => {
 			next(new AuthError401(incorrectEmailOrPasswordUser));
