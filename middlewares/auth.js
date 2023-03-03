@@ -10,8 +10,6 @@ module.exports = (req, res, next) => {
 	const token = req.cookies.jwt;
 
 	console.log(`TOKEN = ${token}`);
-	console.log(`JWT_SECRET = ${JWT_SECRET}`);
-	console.log(`NODE_ENV = ${NODE_ENV}`);
 
 	if (!token) {
 		return next(new AuthError401(`${needAuthUser} 1`));
