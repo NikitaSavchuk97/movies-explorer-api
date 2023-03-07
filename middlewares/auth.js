@@ -7,23 +7,23 @@ const AuthError401 = require('../errors/authError');
 const { needAuthUser } = require('../errors/errorsConstantsList');
 
 module.exports = (req, res, next) => {
-	const token = req.cookies.jwt;
+  const token = req.cookies.jwt;
 
-	console.log(`TOKEN = ${token}`);
+  console.log(`TOKEN = ${token}`);
 
-	if (!token) {
-		return next(new AuthError401(`${needAuthUser} 1`));
-	}
+  if (!token) {
+    return next(new AuthError401(`${needAuthUser} 1`));
+  }
 
-	let payload;
+  let payload;
 
-	try {
-		payload = jsonwebtoken.verify(token, NODE_ENV === 'production' ? JWT_SECRET : 'dev-secret');
-	} catch (err) {
-		return next(new AuthError401(`${needAuthUser} 2`));
-	}
+  try {
+    payload = jsonwebtoken.verify(token, NODE_ENV === 'production' ? JWT_SECRET : 'dev-secret');
+  } catch (err) {
+    return next(new AuthError401(`${needAuthUser} 2`));
+  }
 
-	req.user = payload;
+  req.user = payload;
 
-	return next();
+  return next();
 };
