@@ -5,7 +5,7 @@
 
 [Адрес готового проекта](https://snv-project-movies.ru)
 
-[Репозиторий с API проекта](https://github.com/NikitaSavchuk97/movies-explorer-frontend)
+[Репозиторий с FrontEnd проекта](https://github.com/NikitaSavchuk97/movies-explorer-frontend)
 
 Чтобы протестировать возможности сайта на уровне пользователя, необходимо авторизоваться.
 Данные для тестирования приложения:
