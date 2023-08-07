@@ -15,11 +15,3 @@ node_modules
 .idea
 .vscode
 .env
-process.env
-
-# Optional REPL history
-.DS_Store
-.idea
-.vscode
-.env
-process.env
