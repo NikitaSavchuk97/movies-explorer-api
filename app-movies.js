@@ -16,7 +16,7 @@ const {
 	PORT,
 	NODE_ENV,
 	MOVIES_EXPLORER_DB,
-	DEFAULT_DB,
+	DEFAULT_DB = "mongodb://localhost:27017/movies-explorer-db-local"
 } = process.env;
 
 const app = express();
@@ -29,25 +29,6 @@ app.use(cors({
 
 mongoose.set('strictQuery', false);
 mongoose.connect(NODE_ENV === 'production' ? MOVIES_EXPLORER_DB : DEFAULT_DB);
-
-
-
-// ------------------------------------------------------ Лишнее
-app.get('/frn-users', (req, res) => {
-	const filePath = './user-list/user-list.xlsx';
-	const workbook = XLSX.readFile(filePath);
-	// Получение имени первого листа
-	const firstSheetName = workbook.SheetNames[0];
-	// Получение первого листа
-	const worksheet = workbook.Sheets[firstSheetName];
-	// Преобразование данных из листа в JSON
-	const data = XLSX.utils.sheet_to_json(worksheet);
-	console.log(data)
-	res.send(data)
-});
-//---------------------------------------------------------
-
-
 
 app.use(helmet());
 app.use(cookieParser());
