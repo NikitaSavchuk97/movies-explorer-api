@@ -1,6 +1,5 @@
 require('dotenv').config();
 const cors = require('cors');
-const XLSX = require('xlsx'); // лишнее
 const helmet = require('helmet');
 const express = require('express');
 const mongoose = require('mongoose');
