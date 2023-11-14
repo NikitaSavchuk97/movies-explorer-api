@@ -47,8 +47,10 @@ module.exports.loginUser = (req, res, next) => {
 
 module.exports.logoutUser = (req, res) => {
   res
-    .cookie({ sameSite: "none" })
-    .clearCookie("jwt")
+    .clearCookie("jwt", {
+      sameSite: "none",
+      secure: true,
+    })
     .send({ message: "Выход пользователя из профиля прошел успешно" })
     .end();
 };
