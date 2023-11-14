@@ -29,10 +29,8 @@ module.exports.loginUser = (req, res, next) => {
       );
       res
         .cookie("jwt", token, {
-					maxAge: 600000,
-					httpOnly: true,
-          sameSite: "none",
-          secure: true,
+          maxAge: 600000,
+          httpOnly: true,
         })
         .status(200)
         .send({
