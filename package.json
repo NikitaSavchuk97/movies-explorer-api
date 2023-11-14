@@ -33,7 +33,6 @@
 		"jsonwebtoken": "^8.5.1",
 		"mongoose": "^6.6.5",
 		"validator": "^13.7.0",
-		"winston": "^3.8.2",
-		"xlsx": "^0.18.5"
+		"winston": "^3.8.2"
 	}
 }
