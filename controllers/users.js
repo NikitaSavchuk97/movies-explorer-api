@@ -30,7 +30,9 @@ module.exports.loginUser = (req, res, next) => {
       res
         .cookie("jwt", token, {
           maxAge: 600000,
-          httpOnly: true,
+					httpOnly: true,
+					sameSite: "none",
+          secure: true,
         })
         .status(200)
         .send({
