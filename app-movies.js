@@ -24,6 +24,7 @@ app.use(cors({
 	origin: allowedCors.allowedUrls,
 	methods: allowedCors.allowedMethods,
 	credentials: true,
+	exposedHeaders: ['set-cookie'],
 }));
 
 mongoose.set('strictQuery', false);
